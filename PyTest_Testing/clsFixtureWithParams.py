@@ -3,21 +3,22 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pytest
 from webdriver_manager.firefox import GeckoDriverManager
 #Test will run for each params mentioned
+#Fixture input coming from conftest.py file 
 
-@pytest.fixture(params=["chrome", "firefox"], scope='class')
-def init_driver(request):
-
-    if request.param == "chrome":
-        web_driver = webdriver.Chrome()
-
-    if request.param == "firefox":
-        web_driver = webdriver.Firefox()
-
-    request.cls.driver = web_driver
-
-    yield
-
-    web_driver.close()
+# @pytest.fixture(params=["chrome", "firefox"], scope='class')
+# def init_driver(request):
+#
+#     if request.param == "chrome":
+#         web_driver = webdriver.Chrome()
+#
+#     if request.param == "firefox":
+#         web_driver = webdriver.Firefox()
+#
+#     request.cls.driver = web_driver
+#
+#     yield
+#
+#     web_driver.close()
 
 
 @pytest.mark.usefixtures("init_driver")
